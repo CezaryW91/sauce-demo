@@ -25,7 +25,6 @@ test.describe("User can sort items by different options", () => {
       await inventoryPage.sortContainer.selectOption(`${option.name}`);
 
       // Assert
-      //await expect(inventoryPage.inventoryList.locator('.inventory_item').locator('.inventory_item_description').locator('.inventory_item_label').locator('.inventory_item_desc'))
       await expect(inventoryPage.itemName.first()).toHaveText(option.result);
     });
   });
