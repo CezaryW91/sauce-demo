@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     environment: Test
     env:
-          USER: ${{ vars.USER }}
-          PASSWORD: ${{ vars.PASSWORD }}
-          BASE_URL: ${{ vars.BASE_URL }}
+          USER: ${{ Test.vars.USER }}
+          PASSWORD: ${{ Test.vars.PASSWORD }}
+          BASE_URL: ${{ Test.vars.BASE_URL }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
