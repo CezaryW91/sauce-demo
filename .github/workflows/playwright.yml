@@ -20,9 +20,9 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test
         env:
-          USER: #{{github.event.deployment_status.user}}
-          PASSWORD: #{{github.event.deployment_status.password}}
-          BASE_URL: #{{github.event.deployment_status.base_url}}
+          USER: #{{variables.USER}}
+          PASSWORD: #{{variables.PASSWORD}}
+          BASE_URL: #{{variables.BASE_URL}}
       - uses: actions/upload-artifact@v3
         if: always()
         with:
