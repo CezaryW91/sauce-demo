@@ -18,12 +18,12 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run: npx playwright test
         env:
-          USER: "standard_user"
-          PASSWORD: "secret_sauce"
-          BASE_URL: "https://www.saucedemo.com/"
-        
+          USER: ${{ secrets.USER }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+          BASE_URL: ${{ secrets.BASE_URL }}
+        run: npx playwright test
+
       - uses: actions/upload-artifact@v3
         if: always()
         with:
