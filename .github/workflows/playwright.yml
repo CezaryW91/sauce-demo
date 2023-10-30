@@ -23,12 +23,9 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run Playwright tests
         run: |
-          echo $USER | base64 -d > $RUNNER_TEMP/test.user
-          echo $PASSWORD | base64 -d > $RUNNER_TEMP/test.password
-          echo $BASE_URL | base64 -d > $RUNNER_TEMP/test.base_url
-          echo $USER
-          echo $PASSWORD
-          echo $BASE_URL
+          echo "Username is ${{secrets.USER}}"
+          echo "Password is ${{secrets.PASSWORD}}"
+          echo "Base_url is ${{secrets.BASE_URL}}"
           npx playwright test
 
       - uses: actions/upload-artifact@v3
