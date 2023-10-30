@@ -22,7 +22,9 @@ jobs:
           USER: ${{ secrets.USER }}
           PASSWORD: ${{ secrets.PASSWORD }}
           BASE_URL: ${{ secrets.BASE_URL }}
-        run: npx playwright test
+        run: |
+          echo $KEYSTORE_BASE64 | base64 -d > $RUNNER_TEMP/test.keystore
+          npx playwright test
 
       - uses: actions/upload-artifact@v3
         if: always()
