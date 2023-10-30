@@ -2,11 +2,10 @@
 
 ## Running tests
 
-- tests are configured to run on github CI/CD
-  - note - had issues with passing secrets/variables to workflow, so they are passed directly in workflow for now; I'm trying to figure out how to fix this
+- tests are configured to run on github CI/CD with environment and secrets
 - there are scripts created to run tests easily (NPM script)
 - alternatively use "npx playwright test" or "npx playwright test --headed"
-- reports are configured for failures only
+- video and trace reports are configured for failures only
 
 ## Configured tests
 
