@@ -8,6 +8,10 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    env:
+      USER: ${{ secrets.USER }}
+      PASSWORD: ${{ secrets.PASSWORD }}
+      BASE_URL: ${{ secrets.BASE_URL }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -18,14 +22,13 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
-        env:
-          USER: ${{ secrets.USER }}
-          PASSWORD: ${{ secrets.PASSWORD }}
-          BASE_URL: ${{ secrets.BASE_URL }}
         run: |
           echo $USER | base64 -d > $RUNNER_TEMP/test.user
           echo $PASSWORD | base64 -d > $RUNNER_TEMP/test.password
           echo $BASE_URL | base64 -d > $RUNNER_TEMP/test.base_url
+          echo $USER
+          echo $PASSWORD
+          echo $BASE_URL
           npx playwright test
 
       - uses: actions/upload-artifact@v3
